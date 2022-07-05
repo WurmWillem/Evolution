@@ -11,21 +11,24 @@ namespace Evolution
     {
         private static List<Organism> organisms = new List<Organism>();
 
-        public static int SpawnChance = 50;
+        public static int spawnChance = 50;
+        public static int deathChance = 50;
+        public static int mutationChance = 10;
+
+
+        public static int mutated = 0;
 
         public static void Display()
         {
             foreach (Organism org in organisms)
             {
-                Raylib.DrawRectangle(org.x * 20, org.y * 20, 30, 30, Color.RED);
+                Raylib.DrawRectangle(org.x * 20, org.y * 20, 30, 30, org.color);
 
             }
         }
         public static void Update()
         {
-            int rndNum = Raylib.GetRandomValue(1, 101);
-
-            if (rndNum <= SpawnChance)
+            if (Raylib.GetRandomValue(1, 101) <= spawnChance)
             {
                 Add();
             }
@@ -33,7 +36,15 @@ namespace Evolution
 
         private static void Add()
         {
-            Organism org = new Organism(Raylib.GetRandomValue(1, 61), Raylib.GetRandomValue(1, 41));
+            bool mutation = false;
+
+            if (Raylib.GetRandomValue(1, 101) <= mutationChance)
+            {
+                mutation = true;
+                mutated++;
+            }
+
+            Organism org = new Organism(mutation);
             organisms.Add(org);
         }
 

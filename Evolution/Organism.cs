@@ -9,14 +9,21 @@ namespace Evolution
 {
     class Organism
     {
-        private Random rnd = new Random();
         public int x;
         public int y;
 
-        public Organism(int X, int Y)
+        public Color color = Color.RED;
+
+        public Organism(bool mutation)
         {
-            x = X;
-            y = Y;
+            x = Raylib.GetRandomValue(1, 61);
+            y = Raylib.GetRandomValue(1, 41);
+
+            if (mutation)
+            {
+                Console.WriteLine("mutation");
+                color = Color.BLUE;
+            }
         }
        
     }

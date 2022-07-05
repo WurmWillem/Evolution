@@ -20,23 +20,23 @@ namespace Evolution
             height = Height;
         }
 
-        public void Update()
+        public void Update(ref int chance)
         {
             Rectangle rect = new Rectangle(x, y, width, height);
+            Raylib.DrawRectangleRec(rect, Color.LIGHTGRAY);
             
             if (TextBoxIsClicked(rect))
             {
                 clicked = true;
-                Organisms.SpawnChance = 0;
+                chance = 0;
             }
             else if (Raylib.IsMouseButtonPressed(0)) clicked = false;
-
 
             if (clicked && Raylib.GetCharPressed() != 0)
             {
                 int key = GetTypedKey();
 
-                Organisms.SpawnChance = GetSpawnChance(Organisms.SpawnChance, key);
+                chance = GetSpawnChance(chance, key);
             }
         }
 
