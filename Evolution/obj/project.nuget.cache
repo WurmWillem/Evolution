@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "B4tKYbMxJrAM2khIy5SBMaS1VDsXG8NfobkpOfC1c+tOg7I7Cg9vrT5l+kso/7iceWITmfFt8qruNPgPatvzbw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Thije\\Programming\\C#\\Raylib\\Evolution\\Evolution\\Evolution.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Thije\\.nuget\\packages\\raylib-cs\\4.0.0.1\\raylib-cs.4.0.0.1.nupkg.sha512",
+    "C:\\Users\\Thije\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
