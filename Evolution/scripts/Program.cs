@@ -17,9 +17,9 @@ namespace Evolution.scripts
             while (!Raylib.WindowShouldClose())
             {
                 Raylib.BeginDrawing();
-                Raylib.ClearBackground(Color.RAYWHITE);
+                Raylib.ClearBackground(Color.WHITE);
 
-                Game.Start();
+                    Game.Start();
                 
                 Raylib.DrawFPS(10, 10);
                 Raylib.EndDrawing();

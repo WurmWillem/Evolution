@@ -22,14 +22,33 @@ namespace Evolution.scripts
             rect = new Rectangle(X, Y, Width, Height);
         }
 
+        public void UpdateClicked()
+        {
+            //Raylib.DrawRectangleRec(rect, Color.RED);
+            if (IsClicked(rect))
+            {
+                Game.frames = 0;
+                if (Game.frameMultiplier == 3)
+                {
+                    Game.frameMultiplier = 1;
+                }
+                else
+                {
+                    Game.frameMultiplier = 3;
+                }
+                
+                
+            }
+        }
+
         public void UpdateChance(ref int chance)
         {
             Raylib.DrawRectangleRec(rect, Color.LIGHTGRAY);
             
-            if (TextBoxIsClicked(rect))
+            if (IsClicked(rect))
             {
                 clicked = true;
-                chance = 0;
+                chance = 1;
             }
             else if (Raylib.IsMouseButtonPressed(0)) clicked = false;
 
@@ -50,7 +69,7 @@ namespace Evolution.scripts
             }
         }
 
-        private bool TextBoxIsClicked(Rectangle rect)
+        private bool IsClicked(Rectangle rect)
         {
             if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rect) && Raylib.IsMouseButtonPressed(0))
             {
@@ -72,7 +91,7 @@ namespace Evolution.scripts
         }
         private int GetSpawnChance(int spawnChance, int key)
         {
-            if (spawnChance == 0)
+            if (spawnChance == 1 && key != 0)
             {
                 return key;
             }

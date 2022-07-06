@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Evolution": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\Thije\\Programming\\C#\\Raylib\\Evolution\\Evolution"
+    }
+  }
+}

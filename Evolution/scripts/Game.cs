@@ -9,7 +9,9 @@ namespace Evolution.scripts
 {
     static class Game
     {
-        private static int frames = 0;
+        public static int frames = 0;
+        public static int frameMultiplier = 1;
+
         public static int seconds = 0;
 
         public static void Start()
@@ -19,15 +21,13 @@ namespace Evolution.scripts
 
             Equilibrium.Update();
 
-            frames++;
+            frames += 1 * frameMultiplier;
 
             if (frames % 60 == 0)
             {
                 seconds++;
                 Organisms.Update();
             }
-
-            
         }
     }
 }

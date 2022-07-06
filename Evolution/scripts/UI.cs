@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace Evolution.scripts
 {
@@ -13,7 +14,11 @@ namespace Evolution.scripts
         private static Textbox deathChanceBox = new Textbox(350, 100, 75, 30);
         private static Textbox mutationChanceBox = new Textbox(370, 150, 75, 30);
 
+        private static Textbox speedUpBox = new Textbox(35, 550, 90, 130);
+
         private static Textbox EquilibriumBox = new Textbox(6, 450, 380, 30);
+
+        private static Texture2D speedUp = Raylib.LoadTexture("SpeedUp.png");
 
         public static void Display()
         {
@@ -21,12 +26,12 @@ namespace Evolution.scripts
 
             EquilibriumBox.ShowDescription("Equilibrium is the amount of organisms where the population will stabilize. S = spawnrate, D = deathrate.");
 
-            //DrawAesthetic();
+            speedUpBox.UpdateClicked();
 
-            DrawText();
+            Draw();
         }
 
-        private static void DrawText()
+        private static void Draw()
         {
             Raylib.DrawText($"Spawn chance/s: {Organisms.spawnChance}%", 10, 50, 30, Color.BLACK);
             Raylib.DrawText($"Death chance/org/s: {Organisms.deathChance}%", 10, 100, 30, Color.BLACK);
@@ -37,7 +42,8 @@ namespace Evolution.scripts
             Raylib.DrawText($"total mutated organisms = {Organisms.mutated}", 10, 350, 30, Color.BLACK);
 
             Raylib.DrawText($"Equilibrium = S / D = {Equilibrium.equilibrium}", 10, 450, 30, Color.BLACK);
-            
+
+            Raylib.DrawTexture(speedUp, 10, 550, Color.RAYWHITE);
         }
 
         private static void UpdateChanceBoxes()
@@ -45,13 +51,6 @@ namespace Evolution.scripts
             spawnChanceBox.UpdateChance(ref Organisms.spawnChance);
             deathChanceBox.UpdateChance(ref Organisms.deathChance);
             mutationChanceBox.UpdateChance(ref Organisms.mutationChance);
-        }
-
-        private static void DrawAesthetic()
-        {
-            Raylib.DrawRectangle(6, 50, 25, 30, Color.BLUE);
-            Raylib.DrawRectangle(6, 100, 25, 30, Color.BLUE);
-            Raylib.DrawRectangle(6, 150, 25, 30, Color.BLUE);
         }
     }
 }

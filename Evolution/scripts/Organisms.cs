@@ -58,6 +58,5 @@ namespace Evolution.scripts
         {
             return organisms.Count;
         }
-        
     }
 }

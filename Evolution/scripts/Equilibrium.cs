@@ -14,6 +14,5 @@ namespace Evolution.scripts
         {
             equilibrium = Organisms.spawnChance / Organisms.deathChance;
         }
-
     }
 }
