@@ -22,7 +22,7 @@ namespace Evolution.scripts
             rect = new Rectangle(X, Y, Width, Height);
         }
 
-        public void UpdateClicked()
+        public void SpeedUp()
         {
             //Raylib.DrawRectangleRec(rect, Color.RED);
             if (IsClicked(rect))
@@ -36,8 +36,6 @@ namespace Evolution.scripts
                 {
                     Game.frameMultiplier = 3;
                 }
-                
-                
             }
         }
 
@@ -60,12 +58,22 @@ namespace Evolution.scripts
             }
         }
 
-        public void ShowDescription(string descr)
+        public void Restart()
+        {
+            //Raylib.DrawRectangleRec(rect, Color.RED);
+            if (IsClicked(rect))
+            {
+                Game.Restart();
+            }
+        }
+
+        public void ShowDescription(string descr1, string descr2 = "")
         {
             Raylib.DrawRectangleRec(rect, Color.LIGHTGRAY);
             if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rect)) 
             {
-                Raylib.DrawText(descr, 10, (int) y + 50, 20, Color.BLACK);
+                Raylib.DrawText(descr1, 10, (int) y + 50, 20, Color.BLACK);
+                Raylib.DrawText(descr2, 10, (int)y + 70, 20, Color.BLACK);
             }
         }
 

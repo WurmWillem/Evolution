@@ -11,17 +11,15 @@ namespace Evolution.scripts
     {
         private static List<Organism> organisms = new List<Organism>();
 
-        public static int spawnChance = 50;
-        public static int deathChance = 2;
-        public static int mutationChance = 10;
-
-        public static int mutated = 0;
+        public static int spawnChance = 10;
+        public static int deathChance = 5;
+        public static int replicationChance = 4;
 
         public static void Display()
         {
             foreach (Organism org in organisms)
             {
-                Raylib.DrawRectangle(org.x * 20, org.y * 20, 30, 30, org.color);
+                Raylib.DrawRectangle(org.x * 20, org.y * 20, 30, 30, Color.RED);
             }
         }
         public static void Update()
@@ -32,6 +30,11 @@ namespace Evolution.scripts
                 {
                     organisms.RemoveAt(i);
                 }
+
+                if (Raylib.GetRandomValue(1, 101) <= replicationChance)
+                {
+                    Add();
+                }
             }
 
             if (Raylib.GetRandomValue(1, 101) <= spawnChance)
@@ -40,17 +43,14 @@ namespace Evolution.scripts
             }
         }
 
-        private static void Add()
+        public static void Reset()
         {
-            bool mutation = false;
+            organisms = new List<Organism>();
+        }
 
-            if (Raylib.GetRandomValue(1, 101) <= mutationChance)
-            {
-                mutation = true;
-                mutated++;
-            }
-
-            Organism org = new Organism(mutation);
+        public static void Add()
+        {
+            Organism org = new Organism();
             organisms.Add(org);
         }
 

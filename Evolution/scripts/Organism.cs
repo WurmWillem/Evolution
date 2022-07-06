@@ -12,17 +12,11 @@ namespace Evolution.scripts
         public int x;
         public int y;
 
-        public Color color = Color.RED;
-
-        public Organism(bool mutation)
+        public Organism()
         {
             x = Raylib.GetRandomValue(1, 61);
             y = Raylib.GetRandomValue(1, 41);
 
-            if (mutation)
-            {
-                color = Color.BLUE;
-            }
         }
     }
 }

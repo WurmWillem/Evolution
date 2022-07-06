@@ -11,7 +11,7 @@ namespace Evolution.scripts
 
             Raylib.SetTargetFPS(60);
 
-            Console.WriteLine("Start");
+            Game.Setup();
 
             // Main game loop
             while (!Raylib.WindowShouldClose())

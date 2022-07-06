@@ -14,12 +14,14 @@ namespace Evolution.scripts
 
         public static int seconds = 0;
 
+        private static int organisms = 10;
+
         public static void Start()
         {
             Organisms.Display();
             UI.Display();
 
-            Equilibrium.Update();
+            Formulas.Update();
 
             frames += 1 * frameMultiplier;
 
@@ -28,6 +30,24 @@ namespace Evolution.scripts
                 seconds++;
                 Organisms.Update();
             }
+        }
+
+        public static void Setup()
+        {
+            for (int i = 0; i < organisms; i++)
+            {
+                Organisms.Add();
+            }
+        }
+
+        public static void Restart()
+        {
+            Organisms.Reset();
+            Setup();
+
+            seconds = 0;
+            frames = 0;
+            frameMultiplier = 1;
         }
     }
 }
