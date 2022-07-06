@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Evolution
+namespace Evolution.scripts
 {
     class Organism
     {
@@ -21,10 +21,8 @@ namespace Evolution
 
             if (mutation)
             {
-                Console.WriteLine("mutation");
                 color = Color.BLUE;
             }
         }
-       
     }
 }

@@ -5,24 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Evolution
+namespace Evolution.scripts
 {
     class Textbox
     {
         private bool clicked = false;
-        private float x, y, width, height;
+        private float x, y;
+
+        private Rectangle rect;
 
         public Textbox(float X, float Y, float Width, float Height) 
         {
             x = X;
             y = Y;
-            width = Width;
-            height = Height;
+
+            rect = new Rectangle(X, Y, Width, Height);
         }
 
-        public void Update(ref int chance)
+        public void UpdateChance(ref int chance)
         {
-            Rectangle rect = new Rectangle(x, y, width, height);
             Raylib.DrawRectangleRec(rect, Color.LIGHTGRAY);
             
             if (TextBoxIsClicked(rect))
@@ -40,6 +41,14 @@ namespace Evolution
             }
         }
 
+        public void ShowDescription(string descr)
+        {
+            Raylib.DrawRectangleRec(rect, Color.LIGHTGRAY);
+            if (Raylib.CheckCollisionPointRec(Raylib.GetMousePosition(), rect)) 
+            {
+                Raylib.DrawText(descr, 10, (int) y + 50, 20, Color.BLACK);
+            }
+        }
 
         private bool TextBoxIsClicked(Rectangle rect)
         {
@@ -59,7 +68,6 @@ namespace Evolution
             {
                 num = Int32.Parse(key);
             }
-
             return num;
         }
         private int GetSpawnChance(int spawnChance, int key)
@@ -72,9 +80,7 @@ namespace Evolution
             {
                 return spawnChance * 10 + key;
             }
-
             return 1;
         }
-
     }   
 }

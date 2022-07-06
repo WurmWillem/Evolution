@@ -1,7 +1,7 @@
 ﻿using System;
 using Raylib_cs;
 
-namespace Evolution
+namespace Evolution.scripts
 {
     class Program
     {

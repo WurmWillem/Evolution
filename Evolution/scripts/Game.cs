@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Evolution
+namespace Evolution.scripts
 {
     static class Game
     {
@@ -14,10 +14,10 @@ namespace Evolution
 
         public static void Start()
         {
-            
-
-            UI.Display();
             Organisms.Display();
+            UI.Display();
+
+            Equilibrium.Update();
 
             frames++;
 
@@ -26,9 +26,8 @@ namespace Evolution
                 seconds++;
                 Organisms.Update();
             }
+
             
         }
-
-        
     }
 }
